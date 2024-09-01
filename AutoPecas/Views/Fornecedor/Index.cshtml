@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Pecas.Models.Fornecedor>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FornecedorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pais)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FornecedorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pais)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.FornecedorId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FornecedorId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FornecedorId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

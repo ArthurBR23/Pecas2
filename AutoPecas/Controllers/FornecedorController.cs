@@ -11,7 +11,7 @@ namespace Pecas.Controllers
             {
                 FornecedorId = 1,
                 Nome = "Lucas",
-                CNPJ = 123456789,
+                CNPJ = "123456789",
                 Pais = "China",
             },
 
@@ -19,7 +19,7 @@ namespace Pecas.Controllers
             {
                 FornecedorId = 2,
                 Nome = "Caio",
-                CNPJ = 123456788,
+                CNPJ = "123456788",
                 Pais = "Brasil"
             }
         };

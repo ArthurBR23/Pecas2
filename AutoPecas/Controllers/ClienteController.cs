@@ -11,7 +11,7 @@ namespace Pecas.Controllers
             {
                 ClienteId = 1,
                 Nome = "Arthur",
-                CPF= 00000000001,
+                CPF= 0000001,
                 Telefone = 24999873579,
                 Email = "arthur@gmail.com"
 
@@ -20,7 +20,7 @@ namespace Pecas.Controllers
             {
                 ClienteId= 2,
                 Nome = "Ana",
-                CPF= 00000000001,
+                CPF= 00000091,
                 Telefone = 24999888239,
                 Email = "ana@gmail.com"
 

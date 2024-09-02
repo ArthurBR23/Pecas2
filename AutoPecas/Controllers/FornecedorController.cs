@@ -37,5 +37,37 @@ namespace Pecas.Controllers
             Fornecedores.Add(fornecedor);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            return View(Fornecedores.Where(fornecedor => fornecedor.FornecedorId == id).First());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Fornecedor fornecedor)
+        {
+            var fornecedorOld = Fornecedores.Where(fornecedor => fornecedor.FornecedorId == fornecedor.FornecedorId).First();
+            Fornecedores.Remove(fornecedorOld);
+            Fornecedores.Add(fornecedor);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            return View(Fornecedores.Where(fornecedor => fornecedor.FornecedorId == id).First());
+        }
+        public IActionResult Delete(int id)
+        {
+            return View(Fornecedores.Where(fornecedor => fornecedor.FornecedorId == id).First());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var fornecedor = Fornecedores.Where(fornecedor => fornecedor.FornecedorId == id).First();
+            Fornecedores.Remove(fornecedor);
+            return RedirectToAction("Index");
+        }
     }
 }

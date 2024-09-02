@@ -1,10 +1,12 @@
-﻿namespace Pecas.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Pecas.Models
 {
     public class Movimentacao
     {
-        public int MovId { get; set; }
+        [Key]
+        public long MovId { get; set; }
         public int QtdEntrada { get; set; }
-
         public int QtdSaida { get; set; }
     }
 }

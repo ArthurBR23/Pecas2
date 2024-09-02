@@ -26,5 +26,38 @@ namespace Pecas.Controllers
             Movimentacoes.Add(movimentacao);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            return View(Movimentacoes.Where(movimentacao => movimentacao.MovId == id).First());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Movimentacao movimentacao)
+        {
+            var movivemtacaoOld = Movimentacoes.Where(movimentacao => movimentacao.MovId == movimentacao.MovId).First();
+            Movimentacoes.Remove(movivemtacaoOld);
+            Movimentacoes.Add(movimentacao);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            return View(Movimentacoes.Where(movimentacao => movimentacao.MovId == id).First());
+        }
+        public IActionResult Delete(int id)
+        {
+            return View(Movimentacoes.Where(movimentacao => movimentacao.MovId == id).First());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var movimentacao = Movimentacoes.Where(movimentacao => movimentacao.MovId == id).First();
+            Movimentacoes.Remove(movimentacao);
+            return RedirectToAction("Index");
+        }
     }
 }
+

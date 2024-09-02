@@ -43,5 +43,36 @@ namespace Pecas.Controllers
             Produtos.Add(produto);
             return RedirectToAction("Index");
         }
+        public IActionResult Edit(int id)
+        {
+            return View(Produtos.Where(produto => produto.ProdId == id).First());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Produto produto)
+        {
+            var produtoOld = Produtos.Where(produto => produto.ProdId == produto.ProdId).First();
+            Produtos.Remove(produtoOld);
+            Produtos.Add(produto);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            return View(Produtos.Where(produto => produto.ProdId == id).First());
+        }
+        public IActionResult Delete(int id)
+        {
+            return View(Produtos.Where(produto => produto.ProdId == id).First());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var produto = Produtos.Where(produto => produto.ProdId == id).First();
+            Produtos.Remove(produto);
+            return RedirectToAction("Index");
+        }
     }
 }

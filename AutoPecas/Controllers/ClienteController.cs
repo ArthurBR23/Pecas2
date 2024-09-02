@@ -53,9 +53,9 @@ namespace Pecas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Cliente cliente)
         {
-            var clienteOld = Clientes.Where(cliente => cliente.ClienteId == cliente.ClienteId).First();
+            var clienteOld = Clientes.Where(c => c.ClienteId == cliente.ClienteId).First();
             Clientes.Remove(clienteOld);
-            Clientes.Add(cliente); 
+            Clientes.Add(cliente);
             return RedirectToAction("Index");
         }
 
@@ -65,15 +65,14 @@ namespace Pecas.Controllers
         }
         public IActionResult Delete(int id)
         {
-            return View(Clientes.Where(cliente => cliente.ClienteId == id).First());
+            return View(Clientes.Where(x => x.ClienteId == id).First());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(Cliente cliente)
         {
-           var cliente = Clientes.Where(cliente => cliente.ClienteId == id).First();
-            Clientes.Remove(cliente);
+           Clientes.Remove(Clientes.Where(x => x.ClienteId == cliente.ClienteId).First());
             return RedirectToAction("Index");
         }
     }

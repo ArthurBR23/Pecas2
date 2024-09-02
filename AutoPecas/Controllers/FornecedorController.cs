@@ -65,9 +65,15 @@ namespace Pecas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var fornecedor = Fornecedores.Where(fornecedor => fornecedor.FornecedorId == id).First();
-            Fornecedores.Remove(fornecedor);
+            var fornecedor = Fornecedores.FirstOrDefault(fornecedor => fornecedor.FornecedorId == id);
+
+            if (fornecedor != null)
+            {
+                Fornecedores.Remove(fornecedor);
+            }
+
             return RedirectToAction("Index");
         }
+
     }
 }
